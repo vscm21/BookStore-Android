@@ -20,6 +20,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val bookApiKey = project.findProperty("BOOKS_API_KEY") as String? ?: ""
+        buildConfigField("String", "BOOK_API_KEY", "\"$bookApiKey\"")
     }
 
     buildTypes {
@@ -40,6 +43,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
