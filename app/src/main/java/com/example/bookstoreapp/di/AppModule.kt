@@ -1,5 +1,6 @@
 package com.example.bookstoreapp.di
 
+import com.example.bookstoreapp.data.local.entity.FavoriteBookEntity
 import com.example.bookstoreapp.data.remote.BooksApi
 import com.example.bookstoreapp.data.remote.dto.BooksApi
 import com.example.bookstoreapp.util.Constants.Companion.BASE_URL
@@ -42,5 +43,5 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideBooksDatabase : BooksDatabase
+    fun provideBooksDatabase() : FavoriteBookEntity
 }
