@@ -8,8 +8,7 @@ import java.io.Serializable
     tableName = "favorite_books"
 )
 data class FavoriteBookEntity(
-    @PrimaryKey(autoGenerate = true)
-    var id: Int? = null,
+    @PrimaryKey val id: String,
     val title: String,
     val authors: String,
     val description: String?,

@@ -1,12 +1,15 @@
 package com.example.bookstoreapp.di
 
+import android.content.Context
+import androidx.room.Room
+import com.example.bookstoreapp.data.local.dao.BooksDatabase
 import com.example.bookstoreapp.data.local.entity.FavoriteBookEntity
 import com.example.bookstoreapp.data.remote.BooksApi
-import com.example.bookstoreapp.data.remote.dto.BooksApi
 import com.example.bookstoreapp.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,5 +46,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideBooksDatabase() : FavoriteBookEntity
+    fun provideBooksDatabase(@ApplicationContext context: Context) : BooksDatabase {
+        return Room.databaseBuilder(
+            context = context,
+            klass = BooksDatabase::class.java,
+            name = "favorite_books")
+            .build()
+    }
 }

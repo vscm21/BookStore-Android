@@ -63,6 +63,7 @@ coil-network = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", versi
 # Paging
 androidx-paging-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
+androidx-paging-common = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
 
 # Testing
 junit = { group = "junit", name = "junit", version.ref = "junit" }
