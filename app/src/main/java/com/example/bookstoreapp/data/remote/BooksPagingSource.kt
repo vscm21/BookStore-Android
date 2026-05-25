@@ -4,6 +4,7 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.bookstoreapp.data.remote.dto.BookItem
 import com.example.bookstoreapp.domain.model.Book
+import retrofit2.HttpException
 import kotlin.collections.emptyList
 
 class BooksPagingSource(
@@ -29,6 +30,8 @@ class BooksPagingSource(
                 nextKey = if (books.isEmpty()) null else pageNumber + 1
             )
         } catch (e: Exception) {
+            LoadResult.Error(e)
+        } catch (e: HttpException){ // for non 2-xx HTTP STATUS code.
             LoadResult.Error(e)
         }
     }

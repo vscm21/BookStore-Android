@@ -1,7 +1,10 @@
 package com.example.bookstoreapp.data.repository
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.bookstoreapp.BuildConfig
+import androidx.paging.PagingSource
+import com.example.bookstoreapp.data.remote.BooksPagingSource
 import com.example.bookstoreapp.data.local.dao.BooksDatabase
 import com.example.bookstoreapp.data.local.entity.FavoriteBookEntity
 import com.example.bookstoreapp.data.remote.BooksApi
@@ -15,8 +18,8 @@ class BooksRepositoryImpl(
 ) : BooksRepository {
 
     //----- api ---- //
-    override fun getBooks(query: String) : Flow<PagingData<Book>> {
-        TODO("Implement with Paging 3")
+    override fun getBooksPagingSource(query: String) : PagingSource<Int, Book> {
+        return BooksPagingSource(booksApi = booksApi, query = query)
     }
 
 
