@@ -20,7 +20,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         val bookApiKey = project.findProperty("BOOKS_API_KEY") as String? ?: ""
+        println("DEBUG API KEY: $bookApiKey")
         buildConfigField("String", "BOOK_API_KEY", "\"$bookApiKey\"")
+       // buildConfigField("String", "BOOK_API_KEY", "\"AIzaSyCH5TjkUJnKck0sUUWfA1P8XaY9WEj_l3I\"")
     }
 
     buildTypes {

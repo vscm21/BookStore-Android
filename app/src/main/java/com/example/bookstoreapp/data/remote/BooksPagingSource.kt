@@ -18,7 +18,7 @@ class BooksPagingSource(
         return try {
             val response = booksApi.getBooks(
                 query = query,
-                maxResults = params.loadSize,
+                maxResults = minOf(params.loadSize, 40),
                 startIndex = pageNumber * params.loadSize
             )
 
