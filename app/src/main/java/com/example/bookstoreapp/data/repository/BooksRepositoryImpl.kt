@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import com.example.bookstoreapp.data.remote.BooksPagingSource
-import com.example.bookstoreapp.data.local.dao.BooksDatabase
+import com.example.bookstoreapp.data.local.BooksDatabase
 import com.example.bookstoreapp.data.local.entity.FavoriteBookEntity
 import com.example.bookstoreapp.data.remote.BooksApi
 import com.example.bookstoreapp.domain.model.Book

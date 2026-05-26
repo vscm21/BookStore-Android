@@ -2,8 +2,7 @@ package com.example.bookstoreapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.bookstoreapp.data.local.dao.BooksDatabase
-import com.example.bookstoreapp.data.local.entity.FavoriteBookEntity
+import com.example.bookstoreapp.data.local.BooksDatabase
 import com.example.bookstoreapp.data.remote.BooksApi
 import com.example.bookstoreapp.data.repository.BooksRepositoryImpl
 import com.example.bookstoreapp.domain.repository.BooksRepository
