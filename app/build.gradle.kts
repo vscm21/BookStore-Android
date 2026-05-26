@@ -8,9 +8,7 @@ plugins {
 
 android {
     namespace = "com.example.bookstoreapp"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.bookstoreapp"
@@ -47,6 +45,12 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        force("com.squareup:javapoet:1.13.0")
+    }
+}
+
 dependencies {
     // Core
     implementation(libs.androidx.core.ktx)
@@ -68,6 +72,7 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     implementation(libs.androidx.paging.common)
+    implementation(libs.material)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
@@ -84,15 +89,11 @@ dependencies {
     //Paging
     implementation(libs.androidx.paging.runtime)
     implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.paging.common)
 
     // Coil
     implementation(libs.coil.compose)
     implementation(libs.coil.network)
-
-    // Paging
-    implementation(libs.androidx.paging.runtime)
-    implementation(libs.androidx.paging.compose)
-    implementation(libs.androidx.paging.common)
 
     // Testing
     testImplementation(libs.junit)
@@ -105,4 +106,6 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    implementation(libs.javapoet)
 }

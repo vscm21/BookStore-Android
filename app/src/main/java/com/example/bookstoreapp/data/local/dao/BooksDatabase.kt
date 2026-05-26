@@ -8,7 +8,7 @@ import com.example.bookstoreapp.data.local.entity.FavoriteBookEntity
 
 @Database(
     entities = [FavoriteBookEntity::class],
-    version = 1
+    version = 2
 )
 abstract class BooksDatabase : RoomDatabase() {
 

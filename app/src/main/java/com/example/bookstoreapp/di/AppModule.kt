@@ -5,6 +5,8 @@ import androidx.room.Room
 import com.example.bookstoreapp.data.local.dao.BooksDatabase
 import com.example.bookstoreapp.data.local.entity.FavoriteBookEntity
 import com.example.bookstoreapp.data.remote.BooksApi
+import com.example.bookstoreapp.data.repository.BooksRepositoryImpl
+import com.example.bookstoreapp.domain.repository.BooksRepository
 import com.example.bookstoreapp.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -52,5 +54,15 @@ object AppModule {
             klass = BooksDatabase::class.java,
             name = "favorite_books")
             .build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideBooksRepository(
+        api: BooksApi,
+        db: BooksDatabase
+    ): BooksRepository {
+        return BooksRepositoryImpl(api, db)
     }
 }
