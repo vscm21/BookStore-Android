@@ -26,6 +26,9 @@ import coil3.compose.AsyncImage
 import com.example.bookstoreapp.domain.model.Book
 import com.example.bookstoreapp.presentation.viewmodel.BooksViewModel
 import android.net.Uri
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
 import com.example.bookstoreapp.data.local.entity.FavoriteBookEntity
 import com.example.bookstoreapp.domain.model.toFavoriteBookEntity
@@ -34,13 +37,23 @@ import com.example.bookstoreapp.domain.model.toFavoriteBookEntity
 fun BookDetailScreen(bookSelected: Book) {
     val viewModel: BooksViewModel = hiltViewModel()
     val context = LocalContext.current
+    val isFavoriteBook by viewModel.isBookFavorite(bookSelected.id).
+    collectAsState(initial = false)
 
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { viewModel.insertFavoriteBookFromDB(bookSelected.toFavoriteBookEntity()) }
+                onClick = {
+                    //Logic for favorite and unfavorite book
+                    if (isFavoriteBook) {
+                        viewModel.deleteFavoriteBookFromDB(bookSelected.toFavoriteBookEntity())
+                    } else {
+                        viewModel.insertFavoriteBookFromDB(bookSelected.toFavoriteBookEntity())
+                    }
+                }
             ) {
-                Icon(Icons.Default.Favorite, contentDescription = null)
+                Icon( if (isFavoriteBook) Icons.Default.Favorite else
+                    Icons.Default.FavoriteBorder, contentDescription = null)
             }
         }
     ) { paddingValues ->

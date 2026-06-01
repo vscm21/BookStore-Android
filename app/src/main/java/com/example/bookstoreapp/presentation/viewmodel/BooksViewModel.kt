@@ -9,9 +9,11 @@ import com.example.bookstoreapp.data.local.entity.FavoriteBookEntity
 import com.example.bookstoreapp.domain.model.Book
 import com.example.bookstoreapp.domain.repository.BooksRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -53,5 +55,12 @@ class BooksViewModel @Inject constructor(
 
     fun selectBook(book: Book) {
         _selectedBook.value = book
+    }
+
+    //If the books is favorite
+    fun isBookFavorite(bookId: String) : Flow<Boolean> {
+        return favoriteBooks.map { bookList ->
+            bookList.any{ it.id == bookId}
+        }
     }
 }
