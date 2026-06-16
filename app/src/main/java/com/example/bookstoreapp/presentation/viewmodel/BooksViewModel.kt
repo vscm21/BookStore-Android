@@ -34,11 +34,11 @@ class BooksViewModel @Inject constructor(
 
     //---- [DB operations]
     fun insertFavoriteBookFromDB(book: FavoriteBookEntity) = viewModelScope.launch {
-        booksRepository.insertFavoriteBook(book)
+        booksRepository.insertFavoriteBookFromDB(book)
     }
 
     fun deleteFavoriteBookFromDB(bookToDelete: FavoriteBookEntity) = viewModelScope.launch {
-        booksRepository.deleteFavoriteBook(bookToDelete)
+        booksRepository.deleteFavoriteBookFromDB(bookToDelete)
     }
 
     //Continues stream, so it is a value that i will observe it

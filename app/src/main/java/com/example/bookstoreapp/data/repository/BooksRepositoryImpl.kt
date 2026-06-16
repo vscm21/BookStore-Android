@@ -26,9 +26,9 @@ class BooksRepositoryImpl(
     //----- DB ------/
     override fun getAllFavoriteBooks() = booksDatabase.getFavoriteBookDAO().getAllFavoriteBooks()
 
-    override suspend fun insertFavoriteBook(favoriteBookEntity: FavoriteBookEntity) =
+    override suspend fun insertFavoriteBookFromDB(favoriteBookEntity: FavoriteBookEntity) =
         booksDatabase.getFavoriteBookDAO().insertFavoriteBook(favoriteBookInsert = favoriteBookEntity)
 
-    override suspend fun deleteFavoriteBook(favoriteBookDelete: FavoriteBookEntity)  =
+    override suspend fun deleteFavoriteBookFromDB(favoriteBookDelete: FavoriteBookEntity)  =
         booksDatabase.getFavoriteBookDAO().deleteFavoriteBook(favoriteBookDelete = favoriteBookDelete)
 }

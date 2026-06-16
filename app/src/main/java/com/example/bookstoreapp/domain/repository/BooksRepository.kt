@@ -15,7 +15,7 @@ interface BooksRepository {
     // ---- [DB] ------- //
     fun getAllFavoriteBooks(): Flow<List<FavoriteBookEntity>>
 
-    suspend fun insertFavoriteBook(favoriteBookEntity: FavoriteBookEntity)
+    suspend fun insertFavoriteBookFromDB(favoriteBookEntity: FavoriteBookEntity)
 
-    suspend fun deleteFavoriteBook(favoriteBookDelete: FavoriteBookEntity)
+    suspend fun deleteFavoriteBookFromDB(favoriteBookDelete: FavoriteBookEntity)
 }
